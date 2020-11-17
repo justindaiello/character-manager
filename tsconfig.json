@@ -12,7 +12,7 @@
     "allowJs": false,
     "esModuleInterop": true,
     "jsx": "preserve",
-    "rootDir": "src",
+    "rootDirs": ["src", "pages", "styles"],
     "moduleResolution": "node",
     "noImplicitReturns": true,
     "noImplicitAny": false,
@@ -36,11 +36,12 @@
     "scripts",
     "cypress",
     "config",
-    "coverage"
+    "coverage",
   ],
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx", 
+    "styles/GlobalStyle.ts"
   ]
 }
