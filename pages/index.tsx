@@ -1,4 +1,5 @@
-import Head from '../src/components/Head';
+import Head from '@components/Head';
+import Dashboard from '@modules/Dashboard';
 
 import { StyledAppContainer } from '../styles/LayoutStyles';
 
@@ -8,7 +9,7 @@ const Home: React.FC = () => {
       <Head title='Character Manager'>
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <p>Hello</p>
+      <Dashboard />
     </StyledAppContainer>
   );
 };

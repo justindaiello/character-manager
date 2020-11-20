@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "src",
+    "baseUrl": ".",
     "outDir": "build",
     "module": "commonjs",
     "target": "es5",
@@ -20,9 +20,8 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "paths": {
-      "*": [
-        "."
-      ]
+      "@components/*": ["src/components/*"],
+      "@modules/*": ["src/modules/*"]
     },
     "noEmit": true,
     "resolveJsonModule": true,
