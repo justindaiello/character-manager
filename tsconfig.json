@@ -21,7 +21,8 @@
     "forceConsistentCasingInFileNames": true,
     "paths": {
       "@components/*": ["src/components/*"],
-      "@modules/*": ["src/modules/*"]
+      "@modules/*": ["src/modules/*"],
+      "@styles/*": ["styles/*"]
     },
     "noEmit": true,
     "resolveJsonModule": true,
