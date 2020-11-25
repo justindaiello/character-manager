@@ -1,4 +1,5 @@
-## D&D Character Manager WIP
+### D&D Character Manager (coming soon)
 
-#### `yarn` to install node modules
-#### `yarn dev` to fire up the local server
+`yarn install` to install node modules
+
+`yarn dev` to fire up the local server
