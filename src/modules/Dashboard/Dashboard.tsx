@@ -1,11 +1,13 @@
 import React from 'react';
 import axios from 'axios'
 
+import Button, { ButtonEnums } from '@components/Button';
+
 const Dashboard: React.FC = () => {
 
-  async function fetchUsers(): Promise<void> {
+  async function fetchCharacters(): Promise<void> {
     try {
-      const resp = await axios.get('/api/v1/users.json')
+      const resp = await axios.get('/api/v1/characters.json')
 
       console.log('[resp]', resp.data)
     } catch (err) {
@@ -14,9 +16,12 @@ const Dashboard: React.FC = () => {
   }
 
   return (
-    <div>
-      <button onClick={fetchUsers}>Dashboard</button>
-    </div>
+    <Button
+      variant={ButtonEnums.SECONDARY}
+      onClick={fetchCharacters}
+    >
+      Click Me
+    </Button>
   );
 };
 
