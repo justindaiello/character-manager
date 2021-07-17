@@ -22,7 +22,8 @@
     "paths": {
       "@components/*": ["src/components/*"],
       "@modules/*": ["src/modules/*"],
-      "@styles/*": ["styles/*"]
+      "@styles/*": ["styles/*"],
+      "@utils/*": ["src/utils/*"]
     },
     "noEmit": true,
     "resolveJsonModule": true,

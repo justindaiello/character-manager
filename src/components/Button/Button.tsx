@@ -10,18 +10,18 @@ export enum ButtonEnums {
 }
 
 export type ButtonProps = {
-  small?: boolean,
-  variant?: ButtonEnums,
+  small?: string;
+  variant?: ButtonEnums;
   onClick: (e?: React.MouseEvent) => void;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>
 
-const Button: React.FC<ButtonProps> = ({
+function Button({
   small,
   onClick,
   children,
   variant = ButtonEnums.PRIMARY,
   ...rest
-}) => {
+}: ButtonProps) {
   return (
     <StyledButton
       small={small}
