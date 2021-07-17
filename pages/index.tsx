@@ -2,7 +2,7 @@ import Head from '@components/Head';
 import Dashboard from '@modules/Dashboard';
 import { StyledAppContainer } from '@styles/LayoutStyles';
 
-const Home: React.FC = () => {
+function Home() {
   return (
     <StyledAppContainer>
       <Head title='Character Manager'>

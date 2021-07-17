@@ -4,11 +4,12 @@ import GoogleFonts from 'next-google-fonts';
 
 interface Props {
   title: string;
+  children: React.ReactNode;
 }
 
 const fontHref: string = 'https://fonts.googleapis.com/css2?family=Goldman&display=swap';
 
-const Head: React.FC<Props> = ({ children, title }) => {
+function Head({ children, title }: Props) {
   return (
     <React.Fragment>
       <GoogleFonts href={fontHref} />

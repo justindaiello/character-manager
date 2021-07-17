@@ -3,7 +3,7 @@ import axios from 'axios'
 
 import Button, { ButtonEnums } from '@components/Button';
 
-const Dashboard: React.FC = () => {
+function Dashboard() {
 
   async function fetchCharacters(): Promise<void> {
     try {
