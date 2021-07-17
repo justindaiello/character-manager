@@ -8,7 +8,7 @@ const GlobalStyle = createGlobalStyle`
 
   /* TODO: Add more global styling */
   body {
-    background: ${({ theme }) => theme.purple};
+    background: ${({ theme }) => theme.primary};
   }
 `;
 

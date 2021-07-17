@@ -6,5 +6,5 @@ export const StyledAppContainer = styled.main`
   flex: 1;
   height: 100vh;
   background: ${({ theme }) =>
-    `linear-gradient(to bottom right, ${theme.purple} 50%, ${theme.pink})`};
+    `linear-gradient(to bottom right, ${theme.primary} 50%, ${theme.pink})`};
 `;
