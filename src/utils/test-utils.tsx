@@ -1,25 +1,23 @@
-import * as React from 'react';
-import { render } from '@testing-library/react';
-import { ThemeProvider } from 'styled-components';
+import * as React from 'react'
+import { render, RenderOptions } from '@testing-library/react'
+import { ThemeProvider } from 'styled-components'
 
-import theme from '@styles/theme';
-import GlobalStyle from '@styles/GlobalStyle';
+import theme from '@styles/theme'
+import GlobalStyle from '@styles/GlobalStyle'
 
-type RenderProps = {
-  ui: React.ReactElement
+const Providers: React.FC = ({ children }) => {
+  return (
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      {children}
+    </ThemeProvider>
+  )
 }
 
-const customRender = ({ ui }: RenderProps) => {
-  return {
-    ...render(
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        {ui}
-      </ThemeProvider>
-    )
-  }
-}
+const customRender = (
+  ui: React.ReactElement,
+  options?: Omit<RenderOptions, 'wrapper'>
+) => render(ui, { wrapper: Providers, ...options })
 
 export * from '@testing-library/react'
-
-export { customRender as render };
+export { customRender as render }
