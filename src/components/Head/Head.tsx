@@ -2,7 +2,7 @@ import * as React from 'react';
 import NextHead from 'next/head';
 import GoogleFonts from 'next-google-fonts';
 
-interface Props {
+type Props = {
   title: string;
   children: React.ReactNode;
 }

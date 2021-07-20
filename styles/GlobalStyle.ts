@@ -1,4 +1,3 @@
-import { create } from 'domain';
 import { reboot } from 'styled-reboot';
 import { createGlobalStyle } from 'styled-components';
 
