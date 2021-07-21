@@ -12,7 +12,7 @@ export enum ButtonEnums {
 export type ButtonProps = {
   small?: boolean
   variant?: ButtonEnums;
-  onClick: (e?: React.MouseEvent) => void;
+  onClick?: (e?: React.MouseEvent) => void;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>
 
 function Button({

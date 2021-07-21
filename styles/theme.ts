@@ -36,7 +36,7 @@ const theme = {
   // ** Borders and Shadows **
   // *************************
 
-  boxShadow: '0px 0px 10px rgba(156, 156, 156, 0.5)',
+  boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.5)',
   boxShadowBottom: '0px 3px 6px rgba(156, 156, 156, 0.5)',
   borderRadiusLg: '30px',
   borderRadius: '9px',
