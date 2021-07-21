@@ -13,6 +13,6 @@ function Home() {
       <Dashboard />
     </StyledAppContainer>
   );
-};
+}
 
 export default Home;

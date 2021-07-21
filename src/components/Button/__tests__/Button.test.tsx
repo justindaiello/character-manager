@@ -6,12 +6,12 @@ import Button from '../Button';
 const props = {
   onClick: jest.fn(),
   small: false,
-  children: 'Darkwing Copperkettle'
-}
+  children: 'Darkwing Copperkettle',
+};
 
 describe('<Button />', () => {
   it('should render the correct text', () => {
-    const { getByText } = render(<Button {...props} />)
-    expect(getByText(/darkwing copperkettle/i)).toBeInTheDocument()
-  })
-})
+    const { getByText } = render(<Button {...props} />);
+    expect(getByText(/darkwing copperkettle/i)).toBeInTheDocument();
+  });
+});

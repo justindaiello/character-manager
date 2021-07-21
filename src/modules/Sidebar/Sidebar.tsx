@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 import { LoginModal } from '@components/Modals';
 import { StyledSidebar } from './Sidebar.styled';
@@ -11,13 +11,11 @@ function Sidebar() {
     <React.Fragment>
       <StyledSidebar>
         <p>Character Manager</p>
-        <LinkButton onClick={() => setShowModal(!showModal)}>
-          Log In
-        </LinkButton>
+        <LinkButton onClick={() => setShowModal(!showModal)}>Log In</LinkButton>
       </StyledSidebar>
       <LoginModal open={showModal} setShowModal={setShowModal} />
     </React.Fragment>
-  )
+  );
 }
 
-export default Sidebar
+export default Sidebar;

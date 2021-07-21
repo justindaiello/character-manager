@@ -1,5 +1,6 @@
-import React from 'react'
+import React from 'react';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import { Modal } from 'react-responsive-modal';
 
 import Input from '@components/Input';
@@ -8,35 +9,48 @@ import { StyledFormGroup, StyledLoginForm } from './LoginModal.styled';
 
 type LoginModalProps = {
   open: boolean;
-  setShowModal: React.Dispatch<React.SetStateAction<boolean>>
-}
+  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
 function LoginModal({ setShowModal, open }: LoginModalProps) {
   const [formData, setFormData] = React.useState({
     email: '',
-    password: ''
-  })
+    password: '',
+  });
 
-  function handleChange(e): void {
-    let { name, value } = e.target;
+  /**
+   * @description
+   * On change handler for both inputs
+   * Associates name and value from e.target and sets it into state
+   */
+  function handleChange(e: React.SyntheticEvent): void {
+    let { name, value } = e.target as HTMLInputElement;
 
     setFormData(prevState => {
-      return { ...prevState, [name]: value }
-    })
+      return { ...prevState, [name]: value };
+    });
   }
 
-  async function handleSubmit(e): Promise<void> {
-    e.preventDefault()
+  /**
+   * @description
+   * Form submit handler to log in
+   * Grabs form values from state and submits to the api
+   * Closes modal and displays toast on success
+   * TODO: Error handling
+   */
+  async function handleSubmit(e: React.SyntheticEvent): Promise<void> {
+    e.preventDefault();
 
     try {
-      const resp = await axios.post('/api/v1/login', formData)
+      const resp = await axios.post('/api/v1/login', formData);
 
       if (resp?.data.token) {
-        localStorage.setItem("token", resp.data.token)
+        localStorage.setItem('token', resp.data.token);
         setShowModal(false);
+        toast.info('Successfully logged in');
       }
     } catch (err) {
-      console.log('[err]', err.response.data)
+      console.log('[err]', err.response.data);
     }
   }
 
@@ -45,17 +59,17 @@ function LoginModal({ setShowModal, open }: LoginModalProps) {
       <h1>Log in</h1>
       <StyledLoginForm onSubmit={handleSubmit}>
         <StyledFormGroup>
-          <label htmlFor="email">Email Address</label>
-          <Input type="email" name="email" onChange={handleChange} />
+          <label htmlFor='email'>Email Address</label>
+          <Input type='email' name='email' onChange={handleChange} />
         </StyledFormGroup>
         <StyledFormGroup>
-          <label htmlFor="password">Password</label>
-          <Input type="password" name="password" onChange={handleChange} />
+          <label htmlFor='password'>Password</label>
+          <Input type='password' name='password' onChange={handleChange} />
         </StyledFormGroup>
-        <Button type="submit">Log In</Button>
+        <Button type='submit'>Log In</Button>
       </StyledLoginForm>
     </Modal>
-  )
+  );
 }
 
-export default LoginModal
+export default LoginModal;

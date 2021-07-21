@@ -5,7 +5,7 @@ import GoogleFonts from 'next-google-fonts';
 type Props = {
   title: string;
   children: React.ReactNode;
-}
+};
 
 const fontHref: string = 'https://fonts.googleapis.com/css2?family=Goldman&display=swap';
 
@@ -24,6 +24,6 @@ function Head({ children, title }: Props) {
       </NextHead>
     </React.Fragment>
   );
-};
+}
 
 export default Head;
