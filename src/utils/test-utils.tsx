@@ -6,15 +6,7 @@ import { render, RenderOptions } from '@testing-library/react';
 
 import theme from '@styles/theme';
 import GlobalStyle from '@styles/GlobalStyle';
-
 import store from '../appReducers';
-
-// TODO: add to custom render
-export const defaultState = {
-  user: {
-    name: 'Luke Skywalker',
-  },
-};
 
 const Providers: React.FC = ({ children }) => {
   return (
