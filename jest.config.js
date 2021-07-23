@@ -7,5 +7,6 @@ module.exports = {
     "^@utils(.*)$": "<rootDir>/src/utils$1",
     "^@pages(.*)$": "<rootDir>/pages$1",
     "^@styles(.*)$": "<rootDir>/styles$1",
+    "^@context(.*)$": "<rootDir>/src/context$1",
   }
 };

@@ -23,7 +23,8 @@
       "@components/*": ["src/components/*"],
       "@modules/*": ["src/modules/*"],
       "@styles/*": ["styles/*"],
-      "@utils/*": ["src/utils/*"]
+      "@utils/*": ["src/utils/*"],
+      "@context/*": ["src/context/*"]
     },
     "noEmit": true,
     "resolveJsonModule": true,

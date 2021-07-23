@@ -1,10 +1,12 @@
 import React from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
 import { Modal } from 'react-responsive-modal';
 
 import Input from '@components/Input';
 import Button from '@components/Button';
+import authActions from '@modules/Sidebar/actions';
 import { StyledFormGroup, StyledLoginForm } from './LoginModal.styled';
 
 type LoginModalProps = {
@@ -13,6 +15,7 @@ type LoginModalProps = {
 };
 
 function LoginModal({ setShowModal, open }: LoginModalProps) {
+  const dispatch = useDispatch();
   const [formData, setFormData] = React.useState({
     email: '',
     password: '',
@@ -46,6 +49,7 @@ function LoginModal({ setShowModal, open }: LoginModalProps) {
 
       if (resp?.data.token) {
         localStorage.setItem('token', resp.data.token);
+        dispatch(authActions.setUserInfo(resp.data));
         setShowModal(false);
         toast.info('Successfully logged in');
       }

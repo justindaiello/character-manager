@@ -14,13 +14,8 @@ function Dashboard() {
 
       console.log('[resp]', resp.data);
     } catch (err) {
-      let { message } = err.response.data;
-      console.log('[err]', message);
+      console.log('[err]', err.response);
     }
-  }
-
-  function handleLogout() {
-    localStorage.removeItem('token');
   }
 
   function showToast(): void {
@@ -29,7 +24,6 @@ function Dashboard() {
 
   return (
     <div>
-      <button onClick={handleLogout}>Log Out</button>
       <button onClick={fetchUser}>Fetch User</button>
       <button onClick={showToast}>Show Toast</button>
     </div>
