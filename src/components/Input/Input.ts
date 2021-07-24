@@ -7,10 +7,7 @@ const Input = styled.input`
   padding: 0.375rem;
   border: 1px solid;
   border-radius: ${({ theme }) => theme.borderRadiusSm};
-  border-color: ${({ theme, error }) => (error ? theme.danger : theme.gray300)};
-  border-right: ${({ hasBtn }) => hasBtn && 'none'};
-  border-top-right-radius: ${({ hasBtn }) => hasBtn && 0};
-  border-bottom-right-radius: ${({ hasBtn }) => hasBtn && 0};
+  border-color: ${({ theme, error }) => (error ? theme.danger : theme.primary)};
 
   /* positioning */
   display: block;
@@ -18,7 +15,7 @@ const Input = styled.input`
   /* visual */
   color: ${({ theme }) => theme.black};
   background: ${({ theme }) => theme.white};
-  transition: border-color 0.2s ease-in-out;
+  transition: border-color 0.2s ease-in-out box-shadow 0.2s ease-in-out;
 
   /* typography */
   font-weight: 400;
@@ -26,13 +23,14 @@ const Input = styled.input`
 
   &::placeholder {
     /* visual */
-    color: ${({ theme }) => theme.gray300};
+    color: ${({ theme }) => theme.gray};
     opacity: 1; /* Override Firefox's unusual default opacity; */
   }
 
   &:focus {
     /* box-model */
-    border-color: ${({ theme }) => theme.gray500};
+    box-shadow: 0 0 0 0.1rem rgba(59, 35, 112, 0.7);
+    border-color: ${({ theme }) => theme.primary};
     outline: 0;
   }
 
@@ -40,7 +38,7 @@ const Input = styled.input`
   &[readonly] {
     /* visual */
     cursor: not-allowed !important;
-    background-color: ${({ theme }) => theme.gray100};
+    background-color: ${({ theme }) => theme.disabled};
     /* iOS fix for unreadable disabled content; */
     opacity: 1;
   }

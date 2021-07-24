@@ -12,6 +12,8 @@ const theme = {
   lightBlue: '#20add1',
   danger: '#bf0a30',
   warning: '#edcc65',
+  gray: '#bcc8d9',
+  disabled: '#eef3f9',
 
   // ****************
   // ** Typography **

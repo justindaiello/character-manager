@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { isEmpty } from 'ramda';
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import { Modal } from 'react-responsive-modal';
@@ -7,16 +8,22 @@ import { Modal } from 'react-responsive-modal';
 import Input from '@components/Input';
 import Button from '@components/Button';
 import authActions from '@modules/Sidebar/actions';
-import { StyledFormGroup, StyledLoginForm } from './LoginModal.styled';
+import { StyledFormGroup, StyledLoginForm, StyledErrorSpan } from './LoginModal.styled';
 
 type LoginModalProps = {
   open: boolean;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
+type FormProps = {
+  email?: string;
+  password?: string;
+};
+
 function LoginModal({ setShowModal, open }: LoginModalProps) {
   const dispatch = useDispatch();
-  const [formData, setFormData] = React.useState({
+  const [errors, setErrors] = React.useState<FormProps>({});
+  const [formData, setFormData] = React.useState<FormProps>({
     email: '',
     password: '',
   });
@@ -36,7 +43,29 @@ function LoginModal({ setShowModal, open }: LoginModalProps) {
 
   /**
    * @description
+   * Iterate through form data
+   * add error message to object if field is empty
+   * Set error state if errors
+   * return form obj
+   */
+  function validateData(data: object): object {
+    let errorObj: FormProps = {};
+
+    Object.entries(data).forEach(([name, value]) => {
+      if (!value) errorObj[name] = `${name} must not be blank`;
+    });
+
+    if (!isEmpty(errorObj)) {
+      setErrors(errorObj);
+    }
+
+    return errorObj;
+  }
+
+  /**
+   * @description
    * Form submit handler to log in
+   * Validates form fields
    * Grabs form values from state and submits to the api
    * Closes modal and displays toast on success
    * TODO: Error handling
@@ -44,17 +73,24 @@ function LoginModal({ setShowModal, open }: LoginModalProps) {
   async function handleSubmit(e: React.SyntheticEvent): Promise<void> {
     e.preventDefault();
 
-    try {
-      const resp = await axios.post('/api/v1/login', formData);
+    let validation = validateData(formData);
 
-      if (resp?.data.token) {
-        localStorage.setItem('token', resp.data.token);
-        dispatch(authActions.setUserInfo(resp.data));
-        setShowModal(false);
-        toast.info('Successfully logged in');
+    if (isEmpty(validation)) {
+      setErrors({});
+
+      try {
+        const resp = await axios.post('/api/v1/login', formData);
+
+        if (resp?.data.token) {
+          localStorage.setItem('token', resp.data.token);
+          dispatch(authActions.setUserInfo(resp.data));
+          setShowModal(false);
+          toast.info('Successfully logged in');
+        }
+      } catch (err) {
+        // TODO: handle server error
+        console.log('[err]', err.response.data);
       }
-    } catch (err) {
-      console.log('[err]', err.response.data);
     }
   }
 
@@ -64,11 +100,25 @@ function LoginModal({ setShowModal, open }: LoginModalProps) {
       <StyledLoginForm onSubmit={handleSubmit}>
         <StyledFormGroup>
           <label htmlFor='email'>Email Address</label>
-          <Input type='email' name='email' onChange={handleChange} />
+          <Input
+            placeholder='camus@books.com'
+            type='email'
+            name='email'
+            onChange={handleChange}
+            error={errors.email}
+          />
+          {errors.email && <StyledErrorSpan>{errors.email}</StyledErrorSpan>}
         </StyledFormGroup>
         <StyledFormGroup>
           <label htmlFor='password'>Password</label>
-          <Input type='password' name='password' onChange={handleChange} />
+          <Input
+            placeholder='&#9679;&#9679;&#9679;&#9679;&#9679;'
+            type='password'
+            name='password'
+            onChange={handleChange}
+            error={errors.password}
+          />
+          {errors.password && <StyledErrorSpan>{errors.password}</StyledErrorSpan>}
         </StyledFormGroup>
         <Button type='submit'>Log In</Button>
       </StyledLoginForm>
