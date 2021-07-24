@@ -106,6 +106,7 @@ function LoginModal({ setShowModal, open }: LoginModalProps) {
             name='email'
             onChange={handleChange}
             error={errors.email}
+            value={formData.email}
           />
           {errors.email && <StyledErrorSpan>{errors.email}</StyledErrorSpan>}
         </StyledFormGroup>
@@ -117,6 +118,7 @@ function LoginModal({ setShowModal, open }: LoginModalProps) {
             name='password'
             onChange={handleChange}
             error={errors.password}
+            value={formData.password}
           />
           {errors.password && <StyledErrorSpan>{errors.password}</StyledErrorSpan>}
         </StyledFormGroup>
