@@ -2,18 +2,17 @@ import axios from 'axios';
 import React from 'react';
 import { ReactDOM } from 'react-dom';
 import theme from '@styles/theme';
-import { toast } from 'react-toastify';
 import { Provider } from 'react-redux';
 import GlobalStyle from '@styles/GlobalStyle';
-import { ToastContainer } from 'react-toastify';
 import { ThemeProvider } from 'styled-components';
+import { toast, ToastContainer } from 'react-toastify';
 
 import store from '../src/appReducers';
 
 import 'react-responsive-modal/styles.css';
 import 'react-toastify/dist/ReactToastify.css';
 
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== 'production' && typeof window !== 'undefined') {
   const axe = require('@axe-core/react');
   axe(React, ReactDOM, 1000);
 }
