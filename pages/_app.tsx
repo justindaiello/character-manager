@@ -1,12 +1,13 @@
 import axios from 'axios';
 import React from 'react';
 import { ReactDOM } from 'react-dom';
-import theme from '@styles/theme';
 import { Provider } from 'react-redux';
-import GlobalStyle from '@styles/GlobalStyle';
-import { saveState } from '@utils/localStorage';
 import { ThemeProvider } from 'styled-components';
 import { toast, ToastContainer } from 'react-toastify';
+
+import theme from '@styles/theme';
+import GlobalStyle from '@styles/GlobalStyle';
+import { saveState } from '@utils/localStorage';
 
 import store from '../src/appReducers';
 

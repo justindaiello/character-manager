@@ -3,11 +3,12 @@ import { isEmpty } from 'ramda';
 import { toast } from 'react-toastify';
 import { useSelector, useDispatch } from 'react-redux';
 
-import authActions from './actions';
-import { RootState } from 'src/appReducers';
 import { LoginModal } from '@components/Modals';
 import { StyledSidebar } from './Sidebar.styled';
-import LinkButton from '@components/LinkButton/LinkButton';
+import LinkButton from '@components/LinkButton';
+
+import authActions from './actions';
+import { RootState } from '../../appReducers';
 
 function Sidebar() {
   const dispatch = useDispatch();
@@ -33,7 +34,7 @@ function Sidebar() {
       <StyledSidebar>
         <p>Character Manager</p>
         <LinkButton onClick={handleClick}>
-          {!token || isEmpty(token) ? 'Log In' : 'Log Out'}
+          <span suppressHydrationWarning>{!token || isEmpty(token) ? 'Log In' : 'Log Out'}</span>
         </LinkButton>
       </StyledSidebar>
       <LoginModal open={showModal} setShowModal={setShowModal} />

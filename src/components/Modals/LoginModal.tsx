@@ -8,6 +8,7 @@ import { Modal } from 'react-responsive-modal';
 import Input from '@components/Input';
 import Button from '@components/Button';
 import authActions from '@modules/Sidebar/actions';
+
 import { StyledFormGroup, StyledLoginForm, StyledErrorSpan } from './LoginModal.styled';
 
 type LoginModalProps = {
