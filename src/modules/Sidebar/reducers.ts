@@ -3,7 +3,9 @@ import { createReducer, PayloadAction } from '@reduxjs/toolkit';
 import actions from './actions';
 
 interface UserState {
-  user?: object;
+  user?: {
+    name?: string;
+  };
   token?: string;
 }
 
