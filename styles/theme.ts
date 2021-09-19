@@ -1,5 +1,19 @@
 import { rem } from 'polished';
 
+export type FontTypes = {
+  h1FontSize: string;
+  h2FontSize: string;
+  h3FontSize: string;
+  h4FontSize: string;
+  h5FontSize: string;
+  h6FontSize: string;
+  fontSizeXs: string;
+  fontSizeSm: string;
+  fontSizeMd: string;
+  fontSizeLg: string;
+  fontSizeXl: string;
+};
+
 const theme = {
   // *********************
   // ** Color Variables **
