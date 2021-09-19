@@ -87,9 +87,13 @@ function LoginModal({ setShowModal, open }: LoginModalProps) {
           setShowModal(false);
           toast.info('Successfully logged in');
         }
-      } catch (err) {
+      } catch (err: unknown) {
         // TODO: handle server error
-        console.log('[err]', err.response.data);
+        if (axios.isAxiosError(err)) {
+          console.log('[err]', err.response?.data);
+        } else {
+          // handle unknown here
+        }
       }
     }
   }

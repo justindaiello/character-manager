@@ -4,6 +4,7 @@ import { ReactDOM } from 'react-dom';
 import theme from '@styles/theme';
 import { Provider } from 'react-redux';
 import GlobalStyle from '@styles/GlobalStyle';
+import { saveState } from '@utils/localStorage';
 import { ThemeProvider } from 'styled-components';
 import { toast, ToastContainer } from 'react-toastify';
 
@@ -16,6 +17,10 @@ if (process.env.NODE_ENV !== 'production' && typeof window !== 'undefined') {
   const axe = require('@axe-core/react');
   axe(React, ReactDOM, 1000);
 }
+
+store.subscribe(() => {
+  saveState(store.getState());
+});
 
 function MyApp({ Component, pageProps }) {
   /**
