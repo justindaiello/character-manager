@@ -34,9 +34,9 @@ function MyApp({ Component, pageProps }) {
     response => {
       return response;
     },
-    () => {
+    err => {
       localStorage.removeItem('token');
-      toast.info('Invalid token, please log in');
+      toast.info(err.response?.data?.message || 'Uh oh - something went wrong');
     }
   );
 

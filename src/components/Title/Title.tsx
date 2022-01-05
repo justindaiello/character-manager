@@ -10,7 +10,7 @@ export type TitleProps = {
 
 function Title({ children, as = 'h1', size }: TitleProps) {
   return (
-    <StyledTitle as={as} size={size}>
+    <StyledTitle suppressHydrationWarning as={as} size={size}>
       {children}
     </StyledTitle>
   );
